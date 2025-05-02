@@ -7,7 +7,7 @@ WinWindow::~WinWindow() {
 	}
 }
 
-void WinWindow::Create(const char* name, int width, int height) {
+void WinWindow::Create(const char* name, int width, int height, int x, int y) {
     hInst = GetModuleHandle(NULL);
     WNDCLASS wc = { 0 };
     wc.lpfnWndProc = WindowProc;
@@ -54,10 +54,10 @@ LRESULT CALLBACK WinWindow::WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPAR
 };
 #endif
 
-std::unique_ptr<IWindow> CreateWindowInstance() {
+std::shared_ptr<IWindow> CreateWindowInstance() {
 #ifdef _WIN32
-    return std::make_unique<WinWindow>();
+    return std::make_shared<WinWindow>();
 #else
-    return std::make_unique<LinuxWindow>();
+    return std::make_shared<LinuxWindow>();
 #endif
 }
