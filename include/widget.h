@@ -8,19 +8,20 @@
 class Widget {
 public:
    Widget(std::shared_ptr<Widget> parent) : parent(parent) {}  
-   virtual ~Widget() = default;  
+   ~Widget();
    virtual void Create(const char* name, int width, int height, int x = -1, int y = -1) = 0;  
    void AddChild(std::shared_ptr<Widget> child);
 #ifdef _WIN32
-   HWND GetHwnd() const { return hwnd; }
+   HWND GetHwnd() const noexcept { return hwnd; }
 #endif
 
 
 private:  
-   unsigned int id;
+   unsigned int id = 0;
 #ifdef _WIN32
 protected:
 	HWND hwnd = nullptr;
+	HFONT hFont = nullptr;
 #endif
 
 protected:  
