@@ -16,6 +16,14 @@ public:
 	~WinCheckBox() = default;
 	void Create(const char* name, int width, int height, int x = -1, int y = -1) override;
 };
+#elif __linux__
+#include <gtk/gtk.h>
+/*class GtkCheckBox : public ICheckBox {
+public:
+	GtkCheckBox(std::shared_ptr<Widget> parent) : ICheckBox(parent) {}
+	~GtkCheckBox() = default;
+	void Create(const char* name, int width, int height, int x = -1, int y = -1) override;
+};*/
 #endif
 
 std::shared_ptr<ICheckBox> CreateCheckBoxInstance(std::shared_ptr<Widget> parent);

@@ -1,5 +1,6 @@
 #include "window.h"
 
+namespace CommonUI {
 #ifdef _WIN32
 WinWindow::~WinWindow() {
 	if (hwnd) {
@@ -22,7 +23,7 @@ void WinWindow::Create(const char* name, int width, int height, int x, int y) {
     );
 
     if (hwnd == NULL) {
-        MessageBox(NULL, "´°¿Ú´´½¨Ê§°Ü", "´íÎó", MB_OK);
+        MessageBox(NULL, "ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½Ê§ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½", MB_OK);
     }
     else {
         ShowWindow(hwnd, SW_SHOWNORMAL);
@@ -54,10 +55,12 @@ LRESULT CALLBACK WinWindow::WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPAR
 };
 #endif
 
-std::shared_ptr<IWindow> CreateWindowInstance() {
+std::shared_ptr<CommonUI::IWindow> CommonUI::CreateWindowInstance() {
 #ifdef _WIN32
     return std::make_shared<WinWindow>();
-#else
-    return std::make_shared<LinuxWindow>();
 #endif
+#ifdef __linux__
+    return std::make_shared<CommonUI::CustomGtkWindow>();
+#endif
+}
 }

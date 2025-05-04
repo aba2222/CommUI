@@ -16,6 +16,14 @@ public:
 	~WinGroupBox() = default;
 	void Create(const char* name, int width, int height, int x = -1, int y = -1) override;  
 };
+#elif __linux__
+#include <gtk/gtk.h>
+/*class CustomGtkGroupBox : public IGroupBox {
+public:
+	CustomGtkGroupBox(std::shared_ptr<Widget> parent) : IGroupBox(parent) {}
+	~CustomGtkGroupBox() = default;
+	void Create(const char* name, int width, int height, int x = -1, int y = -1) override;
+};*/
 #endif
 
 std::shared_ptr<IGroupBox> CreateGroupBoxInstance(std::shared_ptr<Widget> parent);

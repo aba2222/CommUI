@@ -1,9 +1,10 @@
 #include "group_box.h"
 
+#ifdef _WIN32
 void WinGroupBox::Create(const char* name, int width, int height, int x, int y) {
     HWND parentHwnd = parent ? parent->GetHwnd() : nullptr;
     if (parentHwnd == nullptr) {
-        MessageBox(NULL, "¸¸´°¿Ú¾ä±úÎÞÐ§", "´íÎó", MB_OK);
+        MessageBox(NULL, "ï¿½ï¿½ï¿½ï¿½ï¿½Ú¾ï¿½ï¿½ï¿½ï¿½Ð§", "ï¿½ï¿½ï¿½ï¿½", MB_OK);
         return;
     }
 
@@ -24,14 +25,13 @@ void WinGroupBox::Create(const char* name, int width, int height, int x, int y) 
         NULL);      // Pointer not needed.
     SendMessage(hwnd, WM_SETFONT, (WPARAM)hFont, TRUE);
     if (hwnd == NULL) {
-        MessageBox(NULL, "´°¿Ú´´½¨Ê§°Ü", "´íÎó", MB_OK);
+        MessageBox(NULL, "ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½Ê§ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½", MB_OK);
     }
 }
+#endif
 
 std::shared_ptr<IGroupBox> CreateGroupBoxInstance(std::shared_ptr<Widget> parent) {
 #ifdef _WIN32
     return std::make_shared<WinGroupBox>(parent);
-#else
-    return std::make_shared<LinuxGroupBox>(parent);
 #endif
 };
