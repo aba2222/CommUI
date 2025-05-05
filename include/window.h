@@ -31,8 +31,6 @@ public:
     ~CustomGtkWindow() = default;
     void Create(const char* name, int width, int height, int x = -1, int y = -1) override;
     void Run() override;
-private:
-    GtkWidget* window;
 };
 #endif
 

@@ -3,6 +3,8 @@
 #include <vector>
 #ifdef _WIN32
 #include <Windows.h>
+#elif __linux__
+#include <gtk/gtk.h>
 #endif
 
 class Widget {
@@ -13,18 +15,23 @@ public:
    void AddChild(std::shared_ptr<Widget> child);
 #ifdef _WIN32
    HWND GetHwnd() const noexcept { return hwnd; }
+#elif __linux__
+   GtkWidget* GetWidget() const noexcept { return widget; }
+   GtkWidget* GetFixed() const noexcept { return fixed; }
 #endif
 
 
 private:  
    unsigned int id = 0;
-#ifdef _WIN32
-protected:
-	HWND hwnd = nullptr;
-	HFONT hFont = nullptr;
-#endif
 
 protected:  
    std::vector<std::shared_ptr<Widget>> children;
    std::shared_ptr<Widget> parent;
+#ifdef _WIN32
+   HWND hwnd = nullptr;
+   HFONT hFont = nullptr;
+#elif __linux__
+   GtkWidget* widget = nullptr;
+   GtkWidget* fixed = nullptr;
+#endif
 };

@@ -1,6 +1,7 @@
+#ifdef _WIN32
 #include "button.h"
 
-#ifdef _WIN32
+namespace CommonUI {
 WinButton::~WinButton() {
 	//UnregisterClass(name, hInst);
 }
@@ -32,10 +33,9 @@ void WinButton::Create(const char* name, int width, int height, int x, int y) {
        MessageBox(NULL, "���ڴ���ʧ��", "����", MB_OK);  
    }  
 }
-#endif
 
 std::shared_ptr<IButton> CreateButtonInstance(std::shared_ptr<Widget> parent) {
-#ifdef _WIN32
     return std::make_unique<WinButton>(parent);
-#endif
 }
+}
+#endif

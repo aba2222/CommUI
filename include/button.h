@@ -2,6 +2,7 @@
 #include <functional>
 #include "widget.h"
 
+namespace CommonUI {
 class IButton : public Widget {
 public:
     IButton(std::shared_ptr<Widget> parent) : Widget(parent) {}
@@ -21,12 +22,13 @@ public:
 };
 #elif __linux__
 #include <gtk/gtk.h>
-/*class CustomGtkButton : public IButton {
+class CustomGtkButton : public IButton {
 public:
     CustomGtkButton(std::shared_ptr<Widget> parent) : IButton(parent) {}
     ~CustomGtkButton() = default;
     void Create(const char* name, int width, int height, int x = -1, int y = -1) override;
-};*/
+};
 #endif
 
 std::shared_ptr<IButton> CreateButtonInstance(std::shared_ptr<Widget> parent);
+}

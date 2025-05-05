@@ -19,10 +19,10 @@ int main() {
 	//std::shared_ptr<CommonUI::IGroupBox> my_group_box = CommonUI::CreateGroupBoxInstance(my_window);
 	//my_group_box->Create("My Group Box", 200, 200, 10, 10);
 
-	/*std::shared_ptr<ICheckBox> my_check_box = CreateCheckBoxInstance(my_group_box);
-	std::shared_ptr<IButton> my_button = CreateButtonInstance(my_group_box);
-	my_check_box->Create("Check Me", 100, 40, 10, 30);
-	my_button->Create("OK", 100, 50, 10, 70);*/
+	//std::shared_ptr<ICheckBox> my_check_box = CreateCheckBoxInstance(my_group_box);
+	std::shared_ptr<CommonUI::IButton> my_button = CommonUI::CreateButtonInstance(my_window);
+	//my_check_box->Create("Check Me", 100, 40, 10, 30);
+	my_button->Create("OK", 100, 50, 10, 70);
 
 	my_window->Run();
 
