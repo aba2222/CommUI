@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-namespace CommonUI {
+namespace CommUI {
 void CustomGtkWindow::Create(const char* name, int width, int height, int x, int y) {
     std::cout << "Creating GTK+ window: " << name << std::endl;
     gtk_init(nullptr, nullptr);
@@ -31,4 +31,4 @@ void CustomGtkWindow::Run() {
 std::shared_ptr<IWindow> CreateWindowInstance() {
     return std::make_shared<CustomGtkWindow>();
 }
-}  // namespace CommonUI
+}  // namespace CommUI

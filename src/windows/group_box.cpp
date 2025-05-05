@@ -27,10 +27,8 @@ void WinGroupBox::Create(const char* name, int width, int height, int x, int y) 
         MessageBox(NULL, "���ڴ���ʧ��", "����", MB_OK);
     }
 }
-#endif
 
 std::shared_ptr<IGroupBox> CreateGroupBoxInstance(std::shared_ptr<Widget> parent) {
-#ifdef _WIN32
     return std::make_shared<WinGroupBox>(parent);
+}
 #endif
-};

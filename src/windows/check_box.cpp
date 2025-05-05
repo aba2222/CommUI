@@ -1,6 +1,7 @@
 #include "check_box.h"
 
 #ifdef _WIN32
+namespace CommonUI {
 void WinCheckBox::Create(const char* name, int width, int height, int x, int y) {
     HWND parentHwnd = parent ? parent->GetHwnd() : nullptr;
     if (parentHwnd == nullptr) {
@@ -27,10 +28,9 @@ void WinCheckBox::Create(const char* name, int width, int height, int x, int y) 
         MessageBox(NULL, "���ڴ���ʧ��", "����", MB_OK);
     }
 }
-#endif
 
 std::shared_ptr<ICheckBox> CreateCheckBoxInstance(std::shared_ptr<Widget> parent) {
-#ifdef _WIN32
     return std::make_shared<WinCheckBox>(parent);
-#endif
-};
+}
+}  // namespace CommonUI
+#endif  // _WIN32

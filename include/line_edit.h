@@ -2,16 +2,16 @@
 #include "widget.h"
 
 namespace CommUI {
-class ICheckBox : public Widget {
+class ILineEdit : public Widget {
 public:
-    ICheckBox(std::shared_ptr<Widget> parent) : Widget(parent) {}
-    virtual ~ICheckBox() = default;
+    ILineEdit(std::shared_ptr<Widget> parent) : Widget(parent) {}
+    virtual ~ILineEdit() = default;
     virtual void Create(const char* name, int width, int height, int x = -1, int y = -1) = 0;
 };
 
 #ifdef _WIN32
 #include <windows.h>
-class WinCheckBox : public ICheckBox {
+class WinLineEdit : public ICheckBox {
 public:
     WinCheckBox(std::shared_ptr<Widget> parent) : ICheckBox(parent) {}
     ~WinCheckBox() = default;
@@ -19,13 +19,13 @@ public:
 };
 #elif __linux__
 #include <gtk/gtk.h>
-class CustomGtkCheckBox : public ICheckBox {
+class CustomGtkLineEdit : public ILineEdit {
 public:
-    CustomGtkCheckBox(std::shared_ptr<Widget> parent) : ICheckBox(parent) {}
-    ~CustomGtkCheckBox() = default;
+    CustomGtkLineEdit(std::shared_ptr<Widget> parent) : ILineEdit(parent) {}
+    ~CustomGtkLineEdit() = default;
     void Create(const char* name, int width, int height, int x = -1, int y = -1) override;
 };
 #endif
 
-std::shared_ptr<ICheckBox> CreateCheckBoxInstance(std::shared_ptr<Widget> parent);
+std::shared_ptr<ILineEdit> CreateLineEditInstance(std::shared_ptr<Widget> parent);
 }  // namespace CommUI

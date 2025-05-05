@@ -3,7 +3,7 @@
 
 #include "widget.h"
 
-namespace CommonUI {
+namespace CommUI {
 class IButton : public Widget {
 public:
     IButton(std::shared_ptr<Widget> parent) : Widget(parent) {}
@@ -33,4 +33,4 @@ public:
 #endif
 
 std::shared_ptr<IButton> CreateButtonInstance(std::shared_ptr<Widget> parent);
-}  // namespace CommonUI
+}  // namespace CommUI

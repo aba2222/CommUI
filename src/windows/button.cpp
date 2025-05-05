@@ -1,7 +1,7 @@
 #ifdef _WIN32
 #include "button.h"
 
-namespace CommonUI {
+namespace CommUI {
 WinButton::~WinButton() {
     // UnregisterClass(name, hInst);
 }
@@ -36,5 +36,5 @@ void WinButton::Create(const char* name, int width, int height, int x, int y) {
 std::shared_ptr<IButton> CreateButtonInstance(std::shared_ptr<Widget> parent) {
     return std::make_unique<WinButton>(parent);
 }
-}  // namespace CommonUI
+}  // namespace CommUI
 #endif

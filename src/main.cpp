@@ -3,6 +3,7 @@
 #include "button.h"
 #include "check_box.h"
 #include "group_box.h"
+#include "line_edit.h"
 #include "window.h"
 
 #ifdef _WIN32
@@ -14,20 +15,21 @@
 #endif  // _WIN32
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-    std::shared_ptr<CommonUI::IWindow> my_window = CommonUI::CreateWindowInstance();
-    my_window->Create("My Window", 800, 600);
+    std::cout << "CommUI Demo is running..." << std::endl;
+    std::shared_ptr<CommUI::IWindow> demo_window = CommUI::CreateWindowInstance();
+    demo_window->Create("CommUI Demo", 800, 600);
 
-    // std::shared_ptr<CommonUI::IGroupBox> my_group_box =
-    // CommonUI::CreateGroupBoxInstance(my_window); my_group_box->Create("My Group Box", 200, 200,
-    // 10, 10);
+    std::shared_ptr<CommUI::IGroupBox> demo_group_box = CommUI::CreateGroupBoxInstance(demo_window);
+    demo_group_box->Create("Demo Group Box", 200, 200, 10, 10);
 
-    // std::shared_ptr<ICheckBox> my_check_box = CreateCheckBoxInstance(my_group_box);
-    std::shared_ptr<CommonUI::IButton> my_button = CommonUI::CreateButtonInstance(my_window);
-    // my_check_box->Create("Check Me", 100, 40, 10, 30);
-    my_button->Create("OK", 100, 50, 10, 70);
+    std::shared_ptr<CommUI::ICheckBox> demo_check_box = CommUI::CreateCheckBoxInstance(demo_group_box);
+    std::shared_ptr<CommUI::IButton> demo_button = CommUI::CreateButtonInstance(demo_group_box);
+    std::shared_ptr<CommUI::ILineEdit> demo_line_edit = CommUI::CreateLineEditInstance(demo_group_box);
+    demo_check_box->Create("Check Me", 100, 40, 10, 5);
+    demo_button->Create("OK", 100, 40, 10, 50);
+    demo_line_edit->Create("Enter Text", 100, 40, 10, 95);
 
-    my_window->Run();
+    demo_window->Run();
 
     return 0;
 }

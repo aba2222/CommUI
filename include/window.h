@@ -3,7 +3,7 @@
 
 #include "widget.h"
 
-namespace CommonUI {
+namespace CommUI {
 class IWindow : public Widget {
 public:
     IWindow() : Widget(NULL){};
@@ -37,4 +37,4 @@ public:
 #endif
 
 std::shared_ptr<IWindow> CreateWindowInstance();
-}  // namespace CommonUI
+}  // namespace CommUI
