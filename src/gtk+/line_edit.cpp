@@ -1,3 +1,4 @@
+#ifdef __linux__
 #include "line_edit.h"
 
 namespace CommUI {
@@ -12,3 +13,4 @@ std::shared_ptr<ILineEdit> CreateLineEditInstance(std::shared_ptr<Widget> parent
     return std::make_shared<CustomGtkLineEdit>(parent);
 }
 }  // namespace CommUI
+#endif

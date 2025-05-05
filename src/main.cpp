@@ -27,7 +27,7 @@ int main() {
     std::shared_ptr<CommUI::ILineEdit> demo_line_edit = CommUI::CreateLineEditInstance(demo_group_box);
     demo_check_box->Create("Check Me", 100, 40, 10, 5);
     demo_button->Create("OK", 100, 40, 10, 50);
-    demo_line_edit->Create("Enter Text", 100, 40, 10, 95);
+   demo_line_edit->Create("Enter Text", 100, 20, 10, 95);
 
     demo_window->Run();
 

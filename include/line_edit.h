@@ -11,10 +11,10 @@ public:
 
 #ifdef _WIN32
 #include <windows.h>
-class WinLineEdit : public ICheckBox {
+class WinLineEdit : public ILineEdit {
 public:
-    WinCheckBox(std::shared_ptr<Widget> parent) : ICheckBox(parent) {}
-    ~WinCheckBox() = default;
+    WinLineEdit(std::shared_ptr<Widget> parent) : ILineEdit(parent) {}
+    ~WinLineEdit() = default;
     void Create(const char* name, int width, int height, int x = -1, int y = -1) override;
 };
 #elif __linux__

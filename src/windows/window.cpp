@@ -1,7 +1,7 @@
+#ifdef _WIN32
 #include "window.h"
 
 namespace CommUI {
-#ifdef _WIN32
 WinWindow::~WinWindow() {
     if (hwnd) {
         DestroyWindow(hwnd);
@@ -20,7 +20,7 @@ void WinWindow::Create(const char* name, int width, int height, int x, int y) {
                           height, NULL, NULL, wc.hInstance, this);
 
     if (hwnd == NULL) {
-        MessageBox(NULL, "���ڴ���ʧ��", "����", MB_OK);
+        MessageBox(NULL, "窗口创建失败", "错误", MB_OK);
     } else {
         ShowWindow(hwnd, SW_SHOWNORMAL);
         UpdateWindow(hwnd);

@@ -1,3 +1,4 @@
+#ifdef __linux__
 #include "group_box.h"
 
 namespace CommUI {
@@ -20,3 +21,4 @@ std::shared_ptr<IGroupBox> CreateGroupBoxInstance(std::shared_ptr<Widget> parent
     return std::make_shared<CustomGtkGroupBox>(parent);
 }
 }  // namespace CommUI
+#endif

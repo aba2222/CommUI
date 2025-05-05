@@ -1,3 +1,4 @@
+#ifdef __linux__
 #include "window.h"
 
 #include <iostream>
@@ -32,3 +33,4 @@ std::shared_ptr<IWindow> CreateWindowInstance() {
     return std::make_shared<CustomGtkWindow>();
 }
 }  // namespace CommUI
+#endif

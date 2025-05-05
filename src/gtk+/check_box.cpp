@@ -1,3 +1,4 @@
+#ifdef __linux__
 #include "check_box.h"
 
 namespace CommUI {
@@ -12,3 +13,4 @@ std::shared_ptr<ICheckBox> CreateCheckBoxInstance(std::shared_ptr<Widget> parent
     return std::make_shared<CustomGtkCheckBox>(parent);
 }
 }  // namespace CommUI
+#endif  // LINUX

@@ -1,3 +1,4 @@
+#ifdef __linux__
 #include "button.h"
 
 namespace CommUI {
@@ -12,3 +13,4 @@ std::shared_ptr<IButton> CreateButtonInstance(std::shared_ptr<Widget> parent) {
     return std::make_shared<CustomGtkButton>(parent);
 }
 }  // namespace CommUI
+#endif
