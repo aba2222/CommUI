@@ -1,4 +1,5 @@
 #include "window.h"
+
 #include <iostream>
 
 namespace CommonUI {
@@ -30,4 +31,4 @@ void CustomGtkWindow::Run() {
 std::shared_ptr<IWindow> CreateWindowInstance() {
     return std::make_shared<CustomGtkWindow>();
 }
-}
+}  // namespace CommonUI

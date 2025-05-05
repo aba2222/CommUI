@@ -1,5 +1,5 @@
-#pragma once  
-#include <memory>  
+#pragma once
+#include <memory>
 #include <vector>
 #ifdef _WIN32
 #include <Windows.h>
@@ -9,9 +9,9 @@
 
 class Widget {
 public:
-   Widget(std::shared_ptr<Widget> parent) : parent(parent) {}  
+   Widget(std::shared_ptr<Widget> parent) : parent(parent) {}
    ~Widget();
-   virtual void Create(const char* name, int width, int height, int x = -1, int y = -1) = 0;  
+   virtual void Create(const char* name, int width, int height, int x = -1, int y = -1) = 0;
    void AddChild(std::shared_ptr<Widget> child);
 #ifdef _WIN32
    HWND GetHwnd() const noexcept { return hwnd; }
@@ -20,11 +20,10 @@ public:
    GtkWidget* GetFixed() const noexcept { return fixed; }
 #endif
 
-
-private:  
+private:
    unsigned int id = 0;
 
-protected:  
+protected:
    std::vector<std::shared_ptr<Widget>> children;
    std::shared_ptr<Widget> parent;
 #ifdef _WIN32

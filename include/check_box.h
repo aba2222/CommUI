@@ -3,26 +3,26 @@
 
 class ICheckBox : public Widget {
 public:
-	ICheckBox(std::shared_ptr<Widget> parent) : Widget(parent) {}
-	virtual ~ICheckBox() = default;
-	virtual void Create(const char* name, int width, int height, int x = -1, int y = -1) = 0;
+    ICheckBox(std::shared_ptr<Widget> parent) : Widget(parent) {}
+    virtual ~ICheckBox() = default;
+    virtual void Create(const char* name, int width, int height, int x = -1, int y = -1) = 0;
 };
 
 #ifdef _WIN32
 #include <windows.h>
 class WinCheckBox : public ICheckBox {
 public:
-	WinCheckBox(std::shared_ptr<Widget> parent) : ICheckBox(parent) {}
-	~WinCheckBox() = default;
-	void Create(const char* name, int width, int height, int x = -1, int y = -1) override;
+    WinCheckBox(std::shared_ptr<Widget> parent) : ICheckBox(parent) {}
+    ~WinCheckBox() = default;
+    void Create(const char* name, int width, int height, int x = -1, int y = -1) override;
 };
 #elif __linux__
 #include <gtk/gtk.h>
 /*class GtkCheckBox : public ICheckBox {
 public:
-	GtkCheckBox(std::shared_ptr<Widget> parent) : ICheckBox(parent) {}
-	~GtkCheckBox() = default;
-	void Create(const char* name, int width, int height, int x = -1, int y = -1) override;
+    GtkCheckBox(std::shared_ptr<Widget> parent) : ICheckBox(parent) {}
+    ~GtkCheckBox() = default;
+    void Create(const char* name, int width, int height, int x = -1, int y = -1) override;
 };*/
 #endif
 
